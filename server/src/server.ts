@@ -1,25 +1,10 @@
-import express from 'express';
+const express = require('express')
+const routes = require('./routes')
 
 const app = express();
 
-app.get('/users', (req, res)=>{
-    console.log("Lista de usuarios");
+app.use(express.json());
 
-    res.json([
-        'Diego',
-        'Cleyton',
-        'Robson',
-        'Bruno'
-    ]);
-});
-
-app.post('/users', (req, res)=>{
-    const user = {
-        name: "Sergio",
-        email: "sergio@oi.com"
-    }
-
-    return res.json(user)
-})
+app.use(routes);
 
 app.listen(3333)
